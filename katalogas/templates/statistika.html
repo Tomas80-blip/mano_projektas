@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Statistika</title>
+</head>
+<body>
+
+<h2>Statistika pagal kategorijas</h2>
+<ul>
+{% for kat in kategorijos %}
+    <li>
+        {{ kat.pavadinimas }}:
+        {{ kat.knygu_kiekis }} knygos,
+        vidutinė kaina: {{ kat.vid_kaina|floatformat:2 }} €,
+        max kaina: {{ kat.max_kaina|floatformat:2 }} €,
+        min kaina: {{ kat.min_kaina|floatformat:2 }} €
+    </li>
+{% endfor %}
+</ul>
+<a href="{% url 'pagrindinis' %}">Pagrindinis</a>
+
+</body>
+</html>

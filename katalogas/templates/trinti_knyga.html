@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trinti knyga</title>
+</head>
+<body>
+
+<form method="post">
+    {% csrf_token %}
+    <p>Ar tikrai norite ištrinti „{{ object }}“?</p>
+    <button type="submit">Taip</button>
+    <a href="{% url 'pagrindinis' %}">Atšaukti</a>
+</form>
+
+</body>
+</html>

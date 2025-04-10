@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prideti/Redaguoti knyga</title>
+</head>
+<body>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Išsaugoti</button>
+</form>
+
+<a href="{% url 'pagrindinis' %}">Pagrindinis</a>
+</body>
+</html>

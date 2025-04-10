@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pagrindinis</title>
+</head>
+<body>
+
+<form method="get">
+    <input type="text" name="q" placeholder="Ieškoti pagal pavadinimą ar kategoriją">
+    <button type="submit">Ieškoti</button>
+</form>
+
+<a href="{% url 'prideti_knyga' %}">Pridėti naują knygą</a>
+<a href="{% url 'statistika' %}">Statistika</a>
+
+<ul>
+{% for knyga in knygos %}
+    <li>
+        <strong>{{ knyga.pavadinimas }}</strong> ({{ knyga.kategorija }}): {{ knyga.kaina }} €
+        <a href="{% url 'redaguoti_knyga' knyga.pk %}">Redaguoti</a>
+        <a href="{% url 'trinti_knyga' knyga.pk %}">Trinti</a>
+    </li>
+{% endfor %}
+</ul>
+
+</body>
+</html>
