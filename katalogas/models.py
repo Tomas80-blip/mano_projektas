@@ -16,6 +16,7 @@ class Knyga(models.Model):
         return self.pavadinimas
 
 
+# Prideti kategorijas ir knygas per shell(terminale)
 # python manage.py shell
 
 # from katalogas.models import Kategorija, Knyga

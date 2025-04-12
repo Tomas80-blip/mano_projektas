@@ -1,27 +1,44 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{% static 'stilius/style.css' %}">
     <title>Pagrindinis</title>
 </head>
 <body>
+<div class="container">
+    <form method="get">
+        <input type="text" name="q" placeholder="Ieškoti pagal pavadinimą ar kategoriją">
+        <button type="submit">Ieškoti</button>
+    </form>
+    <div class="button-group">
+    <a href="{% url 'prideti_knyga' %}" >Pridėti naują knygą</a>
+    <a href="{% url 'statistika' %}" >Statistika</a>
+    </div>
 
-<form method="get">
-    <input type="text" name="q" placeholder="Ieškoti pagal pavadinimą ar kategoriją">
-    <button type="submit">Ieškoti</button>
-</form>
-
-<a href="{% url 'prideti_knyga' %}">Pridėti naują knygą</a>
-<a href="{% url 'statistika' %}">Statistika</a>
-
-<ul>
-{% for knyga in knygos %}
-    <li>
-        <strong>{{ knyga.pavadinimas }}</strong> ({{ knyga.kategorija }}): {{ knyga.kaina }} €
-        <a href="{% url 'redaguoti_knyga' knyga.pk %}">Redaguoti</a>
-        <a href="{% url 'trinti_knyga' knyga.pk %}">Trinti</a>
-    </li>
-{% endfor %}
-</ul>
-
+    <table>
+        <thead>
+            <tr>
+                <th>Pavadinimas</th>
+                <th>Kategorija</th>
+                <th>Kaina</th>
+                <th>Veiksmai</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for knyga in knygos %}
+            <tr>
+                <td>{{ knyga.pavadinimas }}</td>
+                <td>{{ knyga.kategorija }}</td>
+                <td>{{ knyga.kaina }} €</td>
+                <td class="button-group1">
+                    <a href="{% url 'redaguoti_knyga' knyga.pk %}" class="redaguoti">Redaguoti</a>
+                    <a href="{% url 'trinti_knyga' knyga.pk %}" class="trinti">Trinti</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

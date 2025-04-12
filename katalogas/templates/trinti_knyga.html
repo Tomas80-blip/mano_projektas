@@ -1,16 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{% static 'stilius/style.css' %}">
     <title>Trinti knyga</title>
 </head>
 <body>
 
-<form method="post">
+<div class="container">
+    <form method="post">
     {% csrf_token %}
     <p>Ar tikrai norite ištrinti „{{ object }}“?</p>
     <button type="submit">Taip</button>
     <a href="{% url 'pagrindinis' %}">Atšaukti</a>
-</form>
+    </form>
+</div>
 
 </body>
 </html>
